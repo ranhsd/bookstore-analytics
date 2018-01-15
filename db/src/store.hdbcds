@@ -1,0 +1,31 @@
+namespace BookStore.db;
+
+context store {
+
+    /*@@layout{"layoutInfo":{"x":-593,"y":3}}*/
+    entity Book {
+        key bookId        : Integer     not null;
+        key authorId      : Integer     not null;
+            bookName      : String(100) not null;
+            isbn          : String(20)  not null;
+            price         : Integer     not null;
+            priceCurrency : String(10)  not null;
+    }
+
+    /*@@layout{"layoutInfo":{"x":-572,"y":-210}}*/
+    entity Author {
+        key authorId    : Integer     not null;
+            name        : String(100) not null;
+            authorBooks : association[1, 0..*] to store.Book { authorId };
+    }
+
+    /*@@layout{"layoutInfo":{"x":-246,"y":-154}}*/
+    entity BookSales {
+        key saleId   : Integer     not null;
+        key bookId   : Integer     not null;
+            quantity : Integer     not null;
+            soldAt   : UTCDateTime not null;
+            discount : Double      default 0;
+    }
+
+};

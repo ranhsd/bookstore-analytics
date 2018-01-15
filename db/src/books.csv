@@ -1,0 +1,47 @@
+bookId,bookName,isbn,price,priceCurrency,authorId
+310,The Great Gatsby,743273567,11,USD,1
+311,Tender Is the Night,1853260975,9,USD,1
+312,This Side of Paradise,486290,5,USD,1
+320,1984,451524934,7,USD,2
+321,Animal Farm,812911612X,14,USD,2
+330,The Catcher in the Rye,316769487,5,USD,3
+340,Slaughterhouse-Five,385333846,10,USD,4
+341,Cats Cradle,038533348X,10,USD,4
+342,Breakfast of Champions,385334206,10,USD,4
+110,Da Vinci Code,9780552149518,7,USD,5
+111,Harry Potter and the Philosophers Stone,9780747532743,6,USD,6
+112,Harry Potter and the Chamber of Secrets,9780747538486,6,USD,6
+120,Angels and Demons,9780552150736,7,USD,5
+121,Harry Potter and the Order of the Phoenix,9780747551003,16,USD,6
+130,Harry Potter and the Half-blood PrinceChildrens Edition,9780747581086,16,USD,6
+140,Harry Potter and the Deathly Hallows,9780747591054,17,USD,6
+141,Harry Potter and the Prisoner of Azkaban,9780747546290,6,USD,6
+142,Twilight,9781904233657,7,USD,7
+143,Harry Potter and the Goblet of Fire,9780747550,8,USD,6
+144,Deception Point,9780552151764,7,USD,5
+145,New Moon,9781904233886,7,USD,7
+146,Lovely Bones,9780330457729,7,USD,8
+147,Digital Fortress,9780552151696,7,USD,5
+148,Curious Incident of the Dog in the Night-time,9780450252,7,USD,9
+149,Eclipse,9781904233916,7,USD,7
+150,Girl with the Dragon Tattoo,9781847245458,7,USD,10
+151,Kite Runner,9780747566533,7,USD,11
+152,Time Travelers Wife,9780464464,7,USD,12
+153,World According to Clarkson,9780141017891,7,USD,13
+154,Atonement,9780429791,7,USD,14
+155,Lost Symbol,9780593054277,18,USD,5
+156,Short History of Nearly Everything,9780557041,9,USD,15
+157,Breaking Dawn,9781905654284,14,USD,7
+158,Harry Potter and the Goblet of Fire,9780747546245,17,USD,6
+159,Harry Potter and the Deathly Hallows,9780747591061,17,USD,6
+160,Girl Who Played With Fire,9781849163422,7,USD,10
+161,Child Called It,9780752837505,6,USD,16
+162,No.1 Ladies Detective Agency,9780349116754,7,USD,17
+163,You are What You EatThe Plan That Will Change Your Life,9780718147655,14,USD,18
+164,Man and Boy,9780006512134,7,USD,19
+165,Birdsong,9780387916,7,USD,20
+166,Labyrinth,9780752877327,7,USD,21
+167,Island,9780755309511,7,USD,22
+168,Life of Pi,9781841953922,7,USD,22
+169,Dr. Atkins New Diet RevolutionThe No-hunger Luxurious Weight Loss P,9780091889487,8,USD,23
+170,Tales of Beedle the Bard,9780747876,6,USD,6

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="BookStore.db::salesInfo" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="salesInfo"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="BookStore.db::store.Book">
+    <resourceUri>BookStore.db::store.Book</resourceUri>
+  </DataSource>
+  <DataSource id="BookStore.db::store.BookSales">
+    <resourceUri>BookStore.db::store.BookSales</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="bookName">
+        <descriptions defaultDescription="bookName"/>
+      </viewAttribute>
+      <viewAttribute id="bookId">
+        <descriptions defaultDescription="bookId"/>
+      </viewAttribute>
+      <viewAttribute id="isbn">
+        <descriptions defaultDescription="isbn"/>
+      </viewAttribute>
+      <viewAttribute id="price">
+        <descriptions defaultDescription="price"/>
+      </viewAttribute>
+      <viewAttribute id="quantity" aggregationType="sum">
+        <descriptions defaultDescription="quantity"/>
+      </viewAttribute>
+      <viewAttribute id="discount" aggregationType="avg">
+        <descriptions defaultDescription="discount"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="priceAfterDiscount" datatype="DECIMAL" length="13" scale="1" expressionLanguage="COLUMN_ENGINE">
+        <formula>&quot;price&quot; - (&quot;price&quot; * &quot;discount&quot; / 100)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+    <input node="BookStore.db::store.Book">
+      <mapping xsi:type="Calculation:AttributeMapping" target="bookName" source="bookName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="bookId" source="bookId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="isbn" source="isbn"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="price" source="price"/>
+    </input>
+    <input node="BookStore.db::store.BookSales">
+      <mapping xsi:type="Calculation:AttributeMapping" target="quantity" source="quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="discount" source="discount"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="bookId" source="bookId"/>
+    </input>
+    <joinAttribute name="bookId"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="bookName" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Book Name"/>
+      <keyMapping columnObjectName="Join_1" columnName="bookName"/>
+    </attribute>
+    <attribute id="bookId" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Book ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="bookId"/>
+    </attribute>
+    <attribute id="isbn" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ISBN"/>
+      <keyMapping columnObjectName="Join_1" columnName="isbn"/>
+    </attribute>
+    <attribute id="price" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Book Price"/>
+      <keyMapping columnObjectName="Join_1" columnName="price"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="quantity" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Number Of Books"/>
+      <measureMapping columnObjectName="Join_1" columnName="quantity"/>
+    </measure>
+    <measure id="priceAfterDiscount" order="6" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="Average Final Price"/>
+      <measureMapping columnObjectName="Join_1" columnName="priceAfterDiscount"/>
+    </measure>
+    <measure id="discount" order="7" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="discount"/>
+      <measureMapping columnObjectName="Join_1" columnName="discount"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="106" y="263"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="BookStore.db::store.Book" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="BookStore.db::store.BookSales" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

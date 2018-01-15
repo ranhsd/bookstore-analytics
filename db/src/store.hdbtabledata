@@ -1,0 +1,23 @@
+{ 
+  "format_version": 1, 
+  "imports": 
+  [ { 
+		"target_table": "BookStore.db::store.Book", 
+		"source_data" : { "data_type" : "CSV", "file_name" : "BookStore.db::books.csv", "has_header" : true }, 
+		"import_settings" : { "import_columns" : [ "bookId", "bookName","isbn","price","priceCurrency", "authorId" ] }, 
+		"column_mappings" : { "bookId" : 1, "bookName" : 2, "isbn" : 3, "price": 4, "priceCurrency" : 5, "authorId": 6 	} 
+	},
+	{ 
+		"target_table": "BookStore.db::store.Author", 
+		"source_data" : { "data_type" : "CSV", "file_name" : "BookStore.db::authors.csv", "has_header" : true }, 
+		"import_settings" : { "import_columns" : [ "authorId", "name"] }, 
+		"column_mappings" : { "authorId" : 1, "name" : 2  } 
+	},
+	{ 
+		"target_table": "BookStore.db::store.BookSales", 
+		"source_data" : { "data_type" : "CSV", "file_name" : "BookStore.db::bookSales.csv", "has_header" : true }, 
+		"import_settings" : { "import_columns" : ["saleId","bookId", "quantity","soldAt","discount"] }, 
+		"column_mappings" : { "saleId" : 1, "bookId" : 2, "quantity" : 3, "soldAt": 4,"discount" : 5 } 
+	} 	
+  ] 
+}
