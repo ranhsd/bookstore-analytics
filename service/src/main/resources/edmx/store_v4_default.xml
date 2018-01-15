@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+	<edmx:DataServices>
+		<Schema Namespace="store" Alias="store" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<EntityType Name="Book">
+				<Key>
+					<PropertyRef Name="bookId"/>
+					<PropertyRef Name="authorId"/>
+				</Key>
+				<Property Name="bookId" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="authorId" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="bookName" Type="Edm.String" MaxLength="100" Nullable="false"/>
+				<Property Name="isbn" Type="Edm.String" MaxLength="20" Nullable="false"/>
+				<Property Name="price" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="priceCurrency" Type="Edm.String" MaxLength="10" Nullable="false"/>
+				<NavigationProperty Name="Authors" Type="store.Author" Nullable="false" Partner="Books"/>
+			</EntityType>
+			<EntityType Name="Author">
+				<Key>
+					<PropertyRef Name="authorId"/>
+				</Key>
+				<Property Name="authorId" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+				<NavigationProperty Name="Books" Type="Collection(store.Book)" Partner="Authors"/>
+			</EntityType>
+			<EntityContainer Name="EntityContainer">
+				<EntitySet Name="Author" EntityType="store.Author">
+					<NavigationPropertyBinding Path="Books" Target="Book"/>
+				</EntitySet>
+				<EntitySet Name="Book" EntityType="store.Book">
+					<NavigationPropertyBinding Path="Authors" Target="Author"/>
+				</EntitySet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
